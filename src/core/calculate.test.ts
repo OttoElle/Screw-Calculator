@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { calculate, permissibleAssemblyPreload, plateResilience } from './calculate'
 import { coarseThread } from './data/threads'
 import { totalEmbedding } from './data/embedding'
+import { headDimensions, nutDimensions } from './data/fasteners'
 
 /** relative Abweichung prüfen */
 const near = (actual: number, expected: number, tol = 0.01) =>
@@ -128,5 +129,18 @@ describe('Plattennachgiebigkeit: Fallunterscheidung', () => {
     const a = plateResilience('DSV', 17, 13.5, 40, ref.DAGr - 1e-6, 60, 205000)
     const b = plateResilience('DSV', 17, 13.5, 40, ref.DAGr + 1e-6, 60, 205000)
     near(a.deltaP, b.deltaP, 1e-4)
+  })
+})
+
+describe('Kopf- und Mutternmaße (Stichproben aus den Normen)', () => {
+  it('ISO 4762 M12: dK = 18, dW = 17,23', () => {
+    expect(headDimensions('ISO4762', 'M12')).toMatchObject({ dK: 18, dW: 17.23, k: 12 })
+  })
+  it('ISO 4017:2022 M4: dW = 6,20, M30 (Produktklasse B): dW = 42,75, s = 46', () => {
+    expect(headDimensions('ISO4017', 'M4').dW).toBe(6.2)
+    expect(headDimensions('ISO4017', 'M30')).toMatchObject({ dK: 46, dW: 42.75 })
+  })
+  it('ISO 4032:2023 M24: s = 36, dW = 33,25, m = 21,5', () => {
+    expect(nutDimensions('M24')).toMatchObject({ s: 36, dW: 33.25, m: 21.5 })
   })
 })

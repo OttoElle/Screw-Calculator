@@ -105,7 +105,7 @@ export function Tables() {
       <DataTable
         id="t-fasteners"
         title="Kopf-, Mutter- und Bohrungsmaße"
-        source="ISO 4762 (Zylinderschraube), ISO 4017 (Sechskantschraube), ISO 4032 (Mutter), ISO 273 (Durchgangsbohrung). Maße in mm. Bitte vor einem echten Nachweis gegen ein Tabellenbuch prüfen."
+        source="DIN EN ISO 4762:2004-06 (Zylinderschraube), DIN EN ISO 4017:2022-10 (Sechskantschraube, M30 und M36 Produktklasse B), DIN EN ISO 4032:2023-12 (Mutter), jeweils d_W min. Durchgangsbohrungen nach ISO 273 (noch nicht gegen die Norm geprüft). Maße in mm."
         head={[
           'Gewinde',
           '4762 d_K',

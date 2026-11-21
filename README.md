@@ -14,7 +14,7 @@ Web-App zur Berechnung hochbeanspruchter Einschraubenverbindungen nach VDI 2230 
 
 Die Tests in `src/core/calculate.test.ts` rechnen das Beispiel B1 aus Anhang B der Richtlinie nach (Abweichung unter 1 %) und prüfen die Gewindegeometrie gegen Tabelle A11.
 
-Die Kopf-, Mutter- und Bohrungsmaße stammen aus den Produktnormen und sollten vor einem echten Nachweis gegen ein Tabellenbuch geprüft werden.
+Die Kopf- und Mutternmaße sind mit DIN EN ISO 4762:2004-06, DIN EN ISO 4017:2022-10 und DIN EN ISO 4032:2023-12 abgeglichen. Die Durchgangsbohrungen nach ISO 273 sind noch nicht gegen die Norm geprüft.
 
 **Schritt 3: Web-App** (`src/App.tsx`, `src/ui/`)
 

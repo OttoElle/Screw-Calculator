@@ -1,11 +1,12 @@
 /**
  * Abmessungen von Schraubenköpfen, Muttern und Durchgangsbohrungen.
  * Diese Werte stehen nicht in der VDI 2230, sondern in den Produktnormen:
- * - ISO 4762 Zylinderschraube mit Innensechskant (dK max, dW min, k = d)
- * - ISO 4017 Sechskantschraube (s, dW min, k)
- * - ISO 4032 Sechskantmutter (s, dW min, m)
- * - ISO 273 Durchgangslöcher (fein, mittel, grob)
- * Werte in mm. Vor Verwendung für Nachweise bitte gegen ein Tabellenbuch prüfen.
+ * - DIN EN ISO 4762:2004-06 Zylinderschraube mit Innensechskant (dK max, dW min, k max = d)
+ * - DIN EN ISO 4017:2022-10 Sechskantschraube (s, dW min, k Nennmaß = Mittel aus kmin/kmax);
+ *   M4 bis M24 Produktklasse A, M30 und M36 Produktklasse B
+ * - DIN EN ISO 4032:2023-12 Sechskantmutter (s, dW min, m max)
+ * - ISO 273 Durchgangslöcher (fein, mittel, grob), noch nicht gegen die Norm geprüft
+ * Werte in mm. Die Werte nach ISO 4762, 4017 und 4032 sind mit den Normtexten abgeglichen.
  */
 
 export type HeadType = 'ISO4762' | 'ISO4017'
@@ -36,8 +37,8 @@ const ISO4762: Record<string, HeadDimensions> = {
 }
 
 const ISO4017: Record<string, HeadDimensions> = {
-  M4: { dK: 7, dW: 5.88, k: 2.8 },
-  M5: { dK: 8, dW: 6.88, k: 3.5 },
+  M4: { dK: 7, dW: 6.2, k: 2.8 },
+  M5: { dK: 8, dW: 7.2, k: 3.5 },
   M6: { dK: 10, dW: 8.88, k: 4 },
   M8: { dK: 13, dW: 11.63, k: 5.3 },
   M10: { dK: 16, dW: 14.63, k: 6.4 },
@@ -60,18 +61,18 @@ export interface NutDimensions {
 }
 
 const ISO4032: Record<string, NutDimensions> = {
-  M4: { s: 7, dW: 5.9, m: 3.2 },
-  M5: { s: 8, dW: 6.9, m: 4.7 },
-  M6: { s: 10, dW: 8.9, m: 5.2 },
-  M8: { s: 13, dW: 11.6, m: 6.8 },
-  M10: { s: 16, dW: 14.6, m: 8.4 },
-  M12: { s: 18, dW: 16.6, m: 10.8 },
-  M14: { s: 21, dW: 19.6, m: 12.8 },
-  M16: { s: 24, dW: 22.5, m: 14.8 },
+  M4: { s: 7, dW: 6.2, m: 3.2 },
+  M5: { s: 8, dW: 7.2, m: 4.7 },
+  M6: { s: 10, dW: 8.88, m: 5.2 },
+  M8: { s: 13, dW: 11.63, m: 6.8 },
+  M10: { s: 16, dW: 14.63, m: 8.4 },
+  M12: { s: 18, dW: 16.63, m: 10.8 },
+  M14: { s: 21, dW: 19.64, m: 12.8 },
+  M16: { s: 24, dW: 22.49, m: 14.8 },
   M20: { s: 30, dW: 27.7, m: 18 },
-  M24: { s: 36, dW: 33.3, m: 21.5 },
-  M30: { s: 46, dW: 42.8, m: 25.6 },
-  M36: { s: 55, dW: 51.1, m: 31 },
+  M24: { s: 36, dW: 33.25, m: 21.5 },
+  M30: { s: 46, dW: 42.75, m: 25.6 },
+  M36: { s: 55, dW: 51.11, m: 31 },
 }
 
 const ISO273: Record<string, Record<HoleSeries, number>> = {

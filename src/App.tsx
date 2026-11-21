@@ -130,7 +130,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        Ergebnisse ohne Gewähr. Kopf-, Mutter- und Bohrungsmaße nach ISO 4762, 4017, 4032 und 273. Nicht berücksichtigt:
+        Ergebnisse ohne Gewähr. Kopf- und Mutternmaße nach DIN EN ISO 4762, 4017 und 4032, Bohrungen nach ISO 273. Nicht berücksichtigt:
         exzentrische Belastung, Temperatur, Einschraubtiefe (R11).
       </footer>
     </div>
