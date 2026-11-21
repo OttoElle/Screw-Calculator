@@ -28,6 +28,10 @@ Die Kopf-, Mutter- und Bohrungsmaße stammen aus den Produktnormen und sollten v
 
 1. Später: PDF-Bericht, exzentrische Verspannung und Belastung, Einschraubtiefe, Temperatureinfluss
 
+## Lokal starten (Windows)
+
+Node.js installieren (https://nodejs.org), dann `start.bat` doppelklicken. Beim ersten Start werden die Abhängigkeiten installiert, danach öffnet sich die App im Browser.
+
 ## Entwicklung
 
 ```bash

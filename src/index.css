@@ -28,31 +28,6 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #11141a;
-    --surface: #1a1e26;
-    --surface-2: #232833;
-    --border: #333a47;
-    --text: #e6e9ef;
-    --muted: #9aa3b2;
-    --accent: #60a5fa;
-    --accent-contrast: #0b1220;
-    --ok: #4ade80;
-    --ok-bg: #12301e;
-    --fail: #f87171;
-    --fail-bg: #3a1616;
-    --bolt: #60a5fa;
-    --plate: #fb923c;
-    --fpa: #fbbf24;
-    --fkr: #4ade80;
-    --cone: rgba(251, 146, 60, 0.2);
-    --part: #2a303c;
-    --part-base: #343b49;
-    --bolt-part: #2a3d63;
-    color-scheme: dark;
-  }
-}
 
 * {
   box-sizing: border-box;
