@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react'
 import type { BoltJointInput, PlateResilience } from '../core/calculate'
 import { nutDimensions } from '../core/data/fasteners'
 import { fmt } from './format'
+import { Expandable } from './Expandable'
 
 interface Props {
   input: BoltJointInput
@@ -48,7 +50,7 @@ export function JointSketch({ input, plate, size, dK, k, plates }: Props) {
   }
   const poly = (sign: 1 | -1) => body.map(([x, y]) => `${X(sign * x)},${Y(y)}`).join(' ')
 
-  const plateRects = []
+  const plateRects: ReactNode[] = []
   for (let i = 0; i < plates; i++) {
     const y0 = (lK / plates) * i
     const h = lK / plates
@@ -61,19 +63,21 @@ export function JointSketch({ input, plate, size, dK, k, plates }: Props) {
   }
 
   const threadStart = Math.max(Math.min(lShank, lK), 0)
-  const threadLines = []
+  const threadLines: ReactNode[] = []
   for (let y = threadStart + t.P / 2; y < boltEnd; y += t.P) {
     threadLines.push(<line key={y} x1={X(-d / 2)} y1={Y(y)} x2={X(d / 2)} y2={Y(y + t.P / 2)} className="thread" />)
   }
 
   return (
-    <section className="card">
-      <h2>Schnittskizze</h2>
-      <p className="hint">
+    <Expandable
+      title="Schnittskizze"
+      hint={<>
         Maßstäblich, mit Ersatzverformungskörper ({plate.case === 'cone' ? 'Kegel' : plate.case === 'sleeve' ? 'Hülse' : 'Kegel und Hülse'}
         , tan φ = {fmt(plate.tanPhi, 3)}).
-      </p>
-      <svg viewBox={`0 0 ${W} ${H}`} className="sketch" role="img" aria-label="Schnittskizze der Schraubenverbindung">
+      </>}
+    >
+      {(large) => (
+      <svg viewBox={`0 0 ${W} ${H}`} className={large ? "sketch large" : "sketch"} role="img" aria-label="Schnittskizze der Schraubenverbindung">
         {plateRects}
         {jointType === 'ESV' && (
           <g>
@@ -99,10 +103,11 @@ export function JointSketch({ input, plate, size, dK, k, plates }: Props) {
         <text x={X(-halfW) + 2} y={Y(lK / 2)} className="dim-text" transform={`rotate(-90 ${X(-halfW) + 2} ${Y(lK / 2)})`} textAnchor="middle">
           lK = {fmt(lK, 3)}
         </text>
-        <text x={X(DA / 2)} y={Y(lK) + 14} textAnchor="end" className="dim-text">
+        <text x={X(DA / 2) - 4} y={Y(lK) + 14} textAnchor="end" className="dim-text">
           DA = {fmt(DA, 3)}
         </text>
       </svg>
-    </section>
+      )}
+    </Expandable>
   )
 }
