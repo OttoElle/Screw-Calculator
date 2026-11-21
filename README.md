@@ -16,10 +16,17 @@ Die Tests in `src/core/calculate.test.ts` rechnen das Beispiel B1 aus Anhang B d
 
 Die Kopf-, Mutter- und Bohrungsmaße stammen aus den Produktnormen und sollten vor einem echten Nachweis gegen ein Tabellenbuch geprüft werden.
 
+**Schritt 3: Web-App** (`src/App.tsx`, `src/ui/`)
+
+- Eingabemaske mit Auswahl aus den Stammdaten, Eingaben werden im Browser gespeichert
+- Ergebnis mit Anziehdrehmoment, Auslastungsbalken für alle Nachweise und aufklappbaren Rechenschritten
+- Verspannungsschaubild (mit Setzen und Betriebskraft) und maßstäbliche Schnittskizze mit Verformungskörper
+- Button „Beispiel B1 laden“ zum Nachvollziehen des Rechenbeispiels aus der Richtlinie
+- Automatisches Deployment auf GitHub Pages bei jedem Push auf `main` (`.github/workflows/deploy.yml`)
+
 ## Nächste Schritte
 
-1. Web-App mit Eingabemaske, Ergebnissen pro Rechenschritt, Verspannungsschaubild, Schnittskizze und Auslastungsbalken
-2. Später: PDF-Bericht, exzentrische Verspannung und Belastung, Einschraubtiefe, Temperatureinfluss
+1. Später: PDF-Bericht, exzentrische Verspannung und Belastung, Einschraubtiefe, Temperatureinfluss
 
 ## Entwicklung
 

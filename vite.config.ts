@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// base './' damit die App auch unter https://<user>.github.io/<repo>/ läuft
 export default defineConfig({
+  base: './',
   plugins: [react()],
 })
