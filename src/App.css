@@ -618,3 +618,88 @@ svg {
     display: none;
   }
 }
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.tabs button {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 14px;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+}
+
+.tabs button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.layout[hidden] {
+  display: none;
+}
+
+.tables {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.toc a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+.tables section {
+  scroll-margin-top: 64px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+table.data th,
+table.data td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+table.data th {
+  background: var(--surface-2);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+table.data tbody tr:hover {
+  background: var(--surface-2);
+}

@@ -4,6 +4,7 @@ import { InputForm } from './ui/InputForm'
 import { StepList, Summary, UtilizationBars } from './ui/Results'
 import { JointDiagram } from './ui/JointDiagram'
 import { JointSketch } from './ui/JointSketch'
+import { Tables } from './ui/Tables'
 import { DEFAULT_STATE, EXAMPLE_B1, toInput, validate, type Derived, type FormState } from './ui/state'
 import './App.css'
 
@@ -29,6 +30,7 @@ function saveState(s: FormState) {
 
 export default function App() {
   const [state, setState] = useState<FormState>(loadState)
+  const [tab, setTab] = useState<'calc' | 'tables'>('calc')
 
   const set = <K extends keyof FormState>(key: K, value: FormState[K]) =>
     setState((prev) => {
@@ -68,17 +70,30 @@ export default function App() {
           <h1>Schraubenrechner</h1>
           <p className="subtitle">Zentrisch verspannte und belastete Einschraubenverbindungen nach VDI 2230 Blatt 1</p>
         </div>
-        <div className="actions">
-          <button type="button" onClick={() => replace(EXAMPLE_B1)}>
-            Beispiel B1 laden
-          </button>
-          <button type="button" className="secondary" onClick={() => replace(DEFAULT_STATE)}>
-            Zurücksetzen
-          </button>
-        </div>
+        {tab === 'calc' && (
+          <div className="actions">
+            <button type="button" onClick={() => replace(EXAMPLE_B1)}>
+              Beispiel B1 laden
+            </button>
+            <button type="button" className="secondary" onClick={() => replace(DEFAULT_STATE)}>
+              Zurücksetzen
+            </button>
+          </div>
+        )}
       </header>
 
-      <main className="layout">
+      <nav className="tabs" role="tablist" aria-label="Ansicht">
+        <button type="button" role="tab" aria-selected={tab === 'calc'} className={tab === 'calc' ? 'active' : ''} onClick={() => setTab('calc')}>
+          Berechnung
+        </button>
+        <button type="button" role="tab" aria-selected={tab === 'tables'} className={tab === 'tables' ? 'active' : ''} onClick={() => setTab('tables')}>
+          Tabellen
+        </button>
+      </nav>
+
+      {tab === 'tables' && <Tables />}
+
+      <main className="layout" hidden={tab !== 'calc'}>
         <aside className="panel">
           <InputForm state={state} derived={derived} set={set} />
         </aside>
